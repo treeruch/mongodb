@@ -27,6 +27,8 @@ app.post('/createAccount', async (req, res) => {
   const payload = req.body;
   const account = new Account(payload);
   await account.save();
+
+  res.json({ status : 'Success' });
   res.status(201).end();
 });
 
