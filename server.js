@@ -32,6 +32,11 @@ app.post('/createAccount', async (req, res) => {
   res.status(201).end();
 });
 
+app.get('/account', async (req, res) => {
+  const account = await Account.find({});
+  res.json(account);
+});
+
 app.listen(9000, () => {
   console.log('Application is running on port 9000');
 });
