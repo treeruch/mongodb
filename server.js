@@ -32,6 +32,16 @@ app.post('/createAccount', async (req, res) => {
   res.status(201).end();
 });
 
+app.get('/login', async (req, res) => {
+  const payload = req.body;
+  const accountObj = new Account(payload);
+
+  console.log(accountObj.name);
+  const account = await Account.findOne({ name: accountObj.name , password: accountObj.password});
+  res.json(account);
+});
+
+
 app.get('/account', async (req, res) => {
   const account = await Account.find({});
   res.json(account);
